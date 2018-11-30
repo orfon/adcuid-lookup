@@ -1,0 +1,32 @@
+{
+    "$id": "https://orf.at/adworx/lookup.schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Schema for sitepage to Adition content unit id lookup.",
+    "type": "object",
+    "required": ["*"],
+    "patternProperties": {
+        "^(\\*|(/|(/[A-Za-z0-9]+)+))$":  { "$ref": "#/definitions/sitepage" }
+    },
+    "additionalProperties": false,
+    "definitions": {
+        "sitepage": {
+            "properties": {
+                "web": { "$ref": "#/definitions/placements" },
+                "mob": { "$ref": "#/definitions/placements" },
+                "app": { "$ref": "#/definitions/placements" }
+            },
+            "additionalProperties": false
+        },
+        "placements": {
+            "$comment": "Placements follow a strict schema and can be prefixed with a location indicator.",
+            "patternProperties": {
+                "^(\\*|([a-z]{2,}_)?[a-z]{2,})$":  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "$comment": "No further check for a valid content unit id. But it must be an integer value."
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

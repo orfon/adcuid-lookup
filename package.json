@@ -1,0 +1,28 @@
+{
+    "name": "@orfon/adcuid-lookup",
+    "version": "0.0.1",
+    "description": "Content unit lookup for a sitepage-based system.",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/orfon/adcuid-lookup.git"
+    },
+    "author": "Philipp Naderer-Puiu",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/orfon/adcuid-lookup/issues"
+    },
+    "homepage": "https://github.com/orfon/adcuid-lookup#readme",
+    "devDependencies": {
+        "ajv": "^6.6.1",
+        "jest": "^23.6.0"
+    },
+    "files": [
+        "LICENSE",
+        "README.md",
+        "src/"
+    ]
+}

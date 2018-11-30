@@ -1,0 +1,22 @@
+{
+    "*": {
+        "mob": { "*": 1 },
+        "web": { "*": 2 },
+        "app": { "*": 3 }
+    },
+    "/": {
+        "mob": { "par": 4 },
+        "web": { "sb":  5 },
+        "app": { "mma": 6 }
+    },
+    "/sub/leaf": {
+        "mob": { "par": 7 },
+        "web": { "sb":  8 },
+        "app": { "mma": 9 }
+    },
+    "/sub/subsub/subsubsub/leaf": {
+        "mob": { "par": 10 },
+        "web": { "sb":  11 },
+        "app": { "mma": 12 }
+    }
+}
