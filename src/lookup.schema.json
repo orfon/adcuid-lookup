@@ -5,7 +5,7 @@
     "type": "object",
     "required": ["*"],
     "patternProperties": {
-        "^(\\*|(/|(/[A-Za-z0-9]+)+))$":  { "$ref": "#/definitions/sitepage" }
+        "^(\\*|(/|(/[a-z0-9]+)+))$":  { "$ref": "#/definitions/sitepage" }
     },
     "additionalProperties": false,
     "definitions": {
@@ -20,7 +20,7 @@
         "placements": {
             "$comment": "Placements follow a strict schema and can be prefixed with a location indicator.",
             "patternProperties": {
-                "^(\\*|([a-z]{2,}_)?[a-z]{2,})$":  {
+                "^[a-z][a-z0-9_]+$":  {
                     "type": "integer",
                     "minimum": 1,
                     "$comment": "No further check for a valid content unit id. But it must be an integer value."

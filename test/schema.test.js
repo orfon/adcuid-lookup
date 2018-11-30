@@ -14,27 +14,27 @@ test("simple sitepage mapping", () => {
     // smallest possible mapping
     expect(validate({
         "*": {
-            "mob": { "*": 1 },
-            "web": { "*": 1 },
-            "app": { "*": 1 }
+            "mob": { "test_placement": 1 },
+            "web": { "test_placement": 1 },
+            "app": { "test_placement": 1 }
         }
     })).toBe(true);
 
     // the fallback sitepage '*' is always required
     expect(validate({
         "/foo": {
-            "mob": { "*": 1 },
-            "web": { "*": 1 },
-            "app": { "*": 1 }
+            "mob": { "test_placement": 1 },
+            "web": { "test_placement": 1 },
+            "app": { "test_placement": 1 }
         }
     })).toBe(false);
 
     // only mob | web | app are allowed platform identifiers
     expect(validate({
         "*": {
-            "xxx": { "*": 1 },
-            "web": { "*": 1 },
-            "app": { "*": 1 }
+            "xxx": { "test_placement": 1 },
+            "web": { "test_placement": 1 },
+            "app": { "test_placement": 1 }
         }
     })).toBe(false);
 
