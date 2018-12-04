@@ -38,7 +38,7 @@ test("simple sitepage mapping", () => {
         }
     })).toBe(false);
 
-    // placements are always lowercase strings
+    // placements are always lowercase strings and at least 2 characters
     expect(validate({
         "*": {
             "mob": { "": 1 },
@@ -53,6 +53,34 @@ test("simple sitepage mapping", () => {
             "app": { "C": 1 }
         }
     })).toBe(false);
+    expect(validate({
+        "*": {
+            "mob": { "a": 1 },
+            "web": { "a": 1 },
+            "app": { "a": 1 }
+        }
+    })).toBe(false);
+    expect(validate({
+        "*": {
+            "mob": { "ab": 1 },
+            "web": { "ab": 1 },
+            "app": { "ab": 1 }
+        }
+    })).toBe(true);
+
+    // allow root mappings
+    expect(validate({
+        "*": {
+            "mob": { "abc": 1 },
+            "web": { "abc": 1 },
+            "app": { "abc": 1 }
+        },
+        "/": {
+            "mob": { "abc": 1 },
+            "web": { "abc": 1 },
+            "app": { "abc": 1 }
+        }
+    })).toBe(true);
 });
 
 test("simple-mapping.json", () => {
