@@ -34,7 +34,7 @@ const mapping = {
     }
 };
 
-test("lookup fallback sitepage for unmatched sitepage", () => {
+test("lookup fallback '*' for an unmatched sitepage", () => {
     expect(lookupContentUnitId(mapping, "/", "mob", "par")).toBe(11);
     expect(lookupContentUnitId(mapping, "/", "app", "par")).toBe(12);
     expect(lookupContentUnitId(mapping, "/", "web", "par")).toBe(13);

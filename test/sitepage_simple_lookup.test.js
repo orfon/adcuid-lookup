@@ -75,7 +75,7 @@ test("lookup defined sitepage", () => {
     expect(lookupContentUnitId(mapping, "/foo/bar/baz", "web", "bil")).toBe(54);
 });
 
-test("lookup sitepage with unmatched suffix", () => {
+test("lookup sitepage with unmatched suffixes", () => {
     expect(lookupContentUnitId(mapping, "/xyz", "mob", "par")).toBe(21);
     expect(lookupContentUnitId(mapping, "/xyz", "app", "par")).toBe(22);
     expect(lookupContentUnitId(mapping, "/xyz", "web", "par")).toBe(23);

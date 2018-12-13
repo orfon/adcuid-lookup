@@ -18,11 +18,13 @@ exports.lookupContentUnitId = (mapping, sitepage, platform, placement) => {
         throw new TypeError("Invalid type: sitepage, platform, placement must be of type string!");
     }
 
+    // check if the given sitepage is valid before executing the lookup;
     // this is the sitepage regex from the JSON schema
     if (/^(\/|(\/[a-z0-9]+)+)$/.test(sitepage) === false) {
         throw new Error("Invalid sitepage!");
     }
 
+    // perform a hierarchical lookup and try to match each level to a content unit id
     if (sitepage.length > 1) {
         const sitepageParts = sitepage.substring(1).split("/");
         for (let i = sitepageParts.length; i > 0; i--) {
@@ -33,13 +35,19 @@ exports.lookupContentUnitId = (mapping, sitepage, platform, placement) => {
         }
     }
 
+    // if a root sitepage is defined, try to match against it
     if (mapping["/"] && mapping["/"][platform] && mapping["/"][platform][placement] > 0) {
         return mapping["/"][platform][placement];
     }
 
-    if (mapping["*"] && mapping["*"][platform] && mapping["*"][platform][placement] > 0) {
-        return mapping["*"][platform][placement];
+    // last step: use the fallback mapping '*' to avoid unmatched sitepages
+    if (mapping["*"] !== undefined) {
+        return (mapping["*"][platform] && mapping["*"][platform][placement] > 0)
+            ? mapping["*"][platform][placement]
+            : null;
     }
 
-    return null;
+    // this should never be reached if the mapping is valid against the schema,
+    // but we cannot expect every mapping to be validated before used => as a precaution throw an error
+    throw new Error("Invalid mapping: fallback sitepage '*' is missing!");
 };

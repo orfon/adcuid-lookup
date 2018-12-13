@@ -18,14 +18,19 @@ const mapping = {
     }
 };
 
-test("lookup parallel placements", () => {
+test("lookup parallel 'par' & 'bil' placements at the same sitepage level", () => {
     expect(lookupContentUnitId(mapping, "/invalid/path", "web", "par")).toBe(13);
     expect(lookupContentUnitId(mapping, "/invalid/path", "web", "bil")).toBe(14);
     expect(lookupContentUnitId(mapping, "/foo/bar", "web", "par")).toBe(43);
     expect(lookupContentUnitId(mapping, "/foo/bar", "web", "bil")).toBe(44);
 });
 
-test("fail lookup and return null because of undefined placement", () => {
+test("fail lookup and return null because of undefined placement 'box'", () => {
     expect(lookupContentUnitId(mapping, "/invalid/path", "web", "box")).toBeNull();
     expect(lookupContentUnitId(mapping, "/foo/bar", "web", "box")).toBeNull();
+});
+
+test("throws error on invalid mapping", () => {
+    expect(() => lookupContentUnitId({}, "/invalid/path", "web", "box")).toThrowError("Invalid mapping: fallback sitepage '*' is missing!");
+    expect(() => lookupContentUnitId({}, "/foo/bar", "web", "box")).toThrowError("Invalid mapping: fallback sitepage '*' is missing!");
 });
