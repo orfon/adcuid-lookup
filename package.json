@@ -17,8 +17,8 @@
     },
     "homepage": "https://github.com/orfon/adcuid-lookup#readme",
     "devDependencies": {
-        "ajv": "^6.6.1",
-        "jest": "^23.6.0"
+        "ajv": "^6.10.0",
+        "jest": "^24.8.0"
     },
     "jest": {
         "collectCoverage": true
