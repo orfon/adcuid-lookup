@@ -5,7 +5,7 @@
     "type": "object",
     "required": ["*"],
     "patternProperties": {
-        "^(\\*|(/|(/[a-z0-9]+)+))$":  { "$ref": "#/definitions/sitepage" }
+        "^(\\*|(/|(/[a-z0-9_-]+)+))$":  { "$ref": "#/definitions/sitepage" }
     },
     "additionalProperties": false,
     "definitions": {
@@ -13,7 +13,8 @@
             "properties": {
                 "web": { "$ref": "#/definitions/placements" },
                 "mob": { "$ref": "#/definitions/placements" },
-                "app": { "$ref": "#/definitions/placements" }
+                "app": { "$ref": "#/definitions/placements" },
+                "smart": { "$ref": "#/definitions/placements" }
             },
             "additionalProperties": false
         },
